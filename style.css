@@ -5,41 +5,34 @@ body {
     color: #fff;
 }
 
-/* Header */
 header {
     text-align: center;
     padding: 60px 20px;
 }
 
 .logo {
-    max-width: 160px;
-    margin-bottom: 20px;
+    width: 160px;
+    display: block;
+    margin: 0 auto 20px;
 }
 
 .tagline {
-    font-size: 2.6em;
-    background: linear-gradient(90deg, #00BFFF, #0077BE);
+    font-size: 2.4em;
+    background: linear-gradient(90deg, #00BFFF, #5DADE2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: fadeDown 1.8s ease forwards;
-}
-
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .about {
     max-width: 720px;
-    margin: 20px auto 0;
-    font-size: 1.15em;
+    margin: auto;
+    font-size: 1.1em;
     color: #5DADE2;
 }
 
-/* Sections */
 section {
     padding: 40px 20px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
 }
 
@@ -50,47 +43,31 @@ section {
     margin-bottom: 30px;
 }
 
-/* Packages */
-.packages {
+.packages, .trust-cards, .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
+    gap: 20px;
 }
 
-.package-card {
+.package-card, .trust-card, .gallery-item {
     background: #111;
     border: 2px solid #00BFFF;
     border-radius: 14px;
-    padding: 22px;
+    padding: 20px;
     width: 280px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.package-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 20px rgba(0,191,255,0.4);
-}
-
-.package-card h3 {
-    color: #00BFFF;
+    text-align: center;
 }
 
 .features {
     list-style: none;
     padding: 0;
-}
-
-.features li {
-    padding-left: 22px;
-    margin: 6px 0;
-    position: relative;
+    text-align: left;
+    margin: 10px 0;
 }
 
 .features li::before {
-    content: "➤";
-    position: absolute;
-    left: 0;
+    content: "➤ ";
     color: #00BFFF;
 }
 
@@ -100,93 +77,71 @@ section {
     margin-top: 10px;
 }
 
-/* WhatsApp Button */
+.trust-card h3 {
+    color: #00BFFF;
+    margin-bottom: 10px;
+}
+
+.trust-card p {
+    color: #5DADE2;
+    font-size: 0.95em;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.qr-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.qr-code {
+    width: 180px;
+    margin-top: 20px;
+}
+
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background: #00BFFF;
     color: #fff;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
+    padding: 12px 18px; /* Makes room for text */
+    border-radius: 50px; /* pill shape for longer text */
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    font-size: 16px;
-    box-shadow: 0 0 18px #00BFFF;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .whatsapp-btn:hover {
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.35);
 }
 
-/* Footer */
+
 footer {
-    border-top: 1px solid #00BFFF;
-    padding: 25px;
     text-align: center;
-    font-size: 0.9em;
+    padding: 20px;
     color: #5DADE2;
 }
 
-/* Scroll Animation */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+/* Responsive */
+@media (max-width: 900px) {
+    .package-card, .trust-card, .gallery-item {
+        width: 45%;
+    }
 }
 
-.animate-on-scroll.show {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 600px) {
+    .package-card, .trust-card, .gallery-item {
+        width: 100%;
+    }
 }
-
-/* Production watermark */
-.production {
-    margin-top: 20px;
-    font-size: 0.85em;
-    letter-spacing: 1px;
-    color: #00BFFF;
-    opacity: 0.7;
-}
-
-.watermark {
-    position: relative;
-    display: inline-block;
-}
-
-.animate-production {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: productionFade 2s ease forwards;
-    animation-delay: 0.5s;
-}
-
-@keyframes productionFade {
-    to { opacity: 0.7; transform: translateY(0); }
-}
-
-/* ========= RESPONSIVE ========= */
-
-/* Small phones */
-@media (max-width: 480px) {
-    .tagline { font-size: 1.8em; }
-    .about { font-size: 1em; padding: 0 10px; }
-    .package-card { width: 100%; max-width: 320px; }
-    .whatsapp-btn { width: 56px; height: 56px; font-size: 14px; }
-}
-
-/* Tablets */
-@media (max-width: 1024px) {
-    .tagline { font-size: 2.2em; }
-    .package-card { width: 45%; }
-}
-
-/* Large screens */
-@media (min-width: 1200px) {
-    .tagline { font-size: 3em; }
-    .packages { max-width: 1200px; margin: auto; }
-}		

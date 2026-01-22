@@ -1,15 +1,26 @@
-// Scroll-based animations
-const animatedElements = document.querySelectorAll('.animate-on-scroll');
+// Auto year update
+document.getElementById('year').textContent = new Date().getFullYear();
 
+// Scroll animation
+const animateElements = document.querySelectorAll('.animate-on-scroll');
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
+        if(entry.isIntersecting){
+            entry.target.classList.add('active');
         }
     });
-}, { threshold: 0.3 });
+}, { threshold: 0.2 });
 
-animatedElements.forEach(el => observer.observe(el));
+animateElements.forEach(el => observer.observe(el));
 
-// Auto-update copyright year
-document.getElementById("year").textContent = new Date().getFullYear();
+// --- QR Code for pitching ---
+function showQRIfPitch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPitch = urlParams.get('pitch');
+    if(isPitch === 'true'){
+        document.getElementById('qrSection').style.display = 'block';
+    }
+}
+
+// Run the function
+showQRIfPitch();
